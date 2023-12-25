@@ -1,0 +1,28 @@
+using System;
+using System.Net;
+
+class Program
+{
+    static void Main()
+    {
+        string domain = "rusmoda.ru";
+
+        try
+        {
+            // Получаем IP-адреса по домену
+            IPHostEntry hostEntry = Dns.GetHostEntry(domain);
+
+            Console.WriteLine($"Информация о домене: {domain}");
+
+            // Выводим все IP-адреса, связанные с доменом
+            foreach (IPAddress ip in hostEntry.AddressList)
+            {
+                Console.WriteLine($"IP-адрес: {ip}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при получении информации о домене: {ex.Message}");
+        }
+    }
+}

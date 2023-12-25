@@ -1,0 +1,23 @@
+using System.Net;
+
+class Program
+{
+    static void Main()
+    {
+        string url = "https://librate.ru/detektivy/tainy-sledovatelyai.pdf";
+        string fileName = "Tayna.pdf";
+
+        using (WebClient client = new WebClient())
+        {
+            try
+            {
+                client.DownloadFile(url, fileName);
+                Console.WriteLine("Файл успешно загружен.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при загрузке файла: {ex.Message}");
+            }
+        }
+    }
+}
